@@ -9,9 +9,9 @@ jobs:
     - name: Run command
       run: |
         echo 'successful'
-  my-check-2:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Run command
-      run: |
-       fail-me
+  # my-check-2:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - name: Run command
+  #     run: |
+  #      fail-me
