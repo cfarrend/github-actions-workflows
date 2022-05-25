@@ -1,14 +1,16 @@
 name: Trivy workflow
 
-repository_dispatch:
-  types: on-demand-build
+on:
+  repository_dispatch:
+    types: on-demand-build
 
 jobs:
   Trivy-Scan:
     runs-on: ubuntu-latest
     strategy:
-      include:
-        repository: ${{ github.event.client_payload.repositories }}
+      matrix:
+        include:
+          repository: ${{ github.event.client_payload.repositories }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
