@@ -3,15 +3,22 @@ name: Push workflow
 on: push
 
 jobs:
-  my-check-1:
+  Trivy-Scan:
     runs-on: ubuntu-latest
     steps:
-    - name: Run command
-      run: |
-        echo 'successful'
-  my-check-2:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Run command
-      run: |
-       fail-me
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: on-demand-build
+          client-payload: '{ "repositories" : "[test]" }'
+      # - name: Checkout code
+      #   uses: actions/checkout@v3
+      # - name: Trivy
+      #   run: |
+      #     docker run -v $(pwd):/work -t aquasec/trivy:0.28.0 fs --format sarif --output /work/results.sarif .
+      # - name: Upload Trivy scan results to GitHub Security tab
+      #   uses: github/codeql-action/upload-sarif@v2
+      #   with:
+      #     category: trivy
+      #     sarif_file: 'results.sarif'
