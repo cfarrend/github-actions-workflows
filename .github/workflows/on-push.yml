@@ -9,7 +9,7 @@ jobs:
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.CFARREND_GITHUB_TOKEN }}
           event-type: on-demand-build
           client-payload: '{ "repositories" : "[test]" }'
       # - name: Checkout code
