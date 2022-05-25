@@ -14,8 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        include:
-          repository: ${{ github.event.client_payload.repositories }}
+        repository: ${{ github.event.client_payload.repositories }}
+        # include:
+        #   repository: ${{ github.event.client_payload.repositories }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
