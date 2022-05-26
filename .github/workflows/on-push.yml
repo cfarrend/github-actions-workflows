@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Test env vars
         run: |
-          echo "MY_VAR=myvalue >> $GITHUB_ENV"
+          echo "MY_VAR=myvalue" >> $GITHUB_ENV
       - name: Echo env var
         run: |
           echo ${{ env.MY_VAR }}
