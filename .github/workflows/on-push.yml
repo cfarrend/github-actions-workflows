@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Test env vars
         run: |
-          echo 'REPOSITORIES=["github-actions-workflows", ""]' >> $GITHUB_ENV
+          echo 'REPOSITORIES=["repo", "github-actions-workflows", ""]' >> $GITHUB_ENV
       - name: Echo env var
         run: |
           echo ${{ env.REPOSITORIES }}
