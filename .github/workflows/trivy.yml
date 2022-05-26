@@ -17,9 +17,15 @@ jobs:
         repository: ${{ github.event.client_payload.repositories }}
         # include:
         #   repository: ${{ github.event.client_payload.repositories }}
+      fail-fast: false
+      max-parallel: 1
     steps:
       - name: Checkout code
         if: ${{ matrix.repository }}
         uses: actions/checkout@v3
         with:
           repository: cfarrend/${{ matrix.repository }}
+      - name: Run trivy
+        if: ${{ matrix.repository }}
+        run: |
+          docker run -v $(pwd):/work -it aquasec/trivy:0.28.0 fs --exit-code 1 .
