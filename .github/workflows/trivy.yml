@@ -19,4 +19,7 @@ jobs:
         #   repository: ${{ github.event.client_payload.repositories }}
     steps:
       - name: Checkout code
+        if: ${{ matrix.repository }}
         uses: actions/checkout@v3
+        with:
+          repository: cfarrend/${{ matrix.repository }}

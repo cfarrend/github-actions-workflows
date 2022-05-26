@@ -11,7 +11,7 @@ jobs:
         with:
           token: ${{ secrets.CFARREND_GITHUB_TOKEN }}
           event-type: on-demand-build
-          client-payload: '{ "repositories" : ["test", "test2", ""] }'
+          client-payload: '{ "repositories" : ["github-actions-workflows", ""] }'
       # - name: Checkout code
       #   uses: actions/checkout@v3
       # - name: Trivy
