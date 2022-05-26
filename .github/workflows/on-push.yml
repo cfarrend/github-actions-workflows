@@ -7,9 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test env vars
-        run:
+        run: |
           echo "MY_VAR=myvalue >> $GITHUB_ENV"
       - name: Echo env var
+        run: |
           echo ${{ env.MY_VAR }}
       # - name: Repository Dispatch
       #   uses: peter-evans/repository-dispatch@v2
