@@ -6,12 +6,18 @@ jobs:
   Trivy-Scan:
     runs-on: ubuntu-latest
     steps:
+      - name: Test env vars
+        run: |
+          echo 'REPOSITORIES=["github-actions-workflows", ""]' >> $GITHUB_ENV
+      - name: Echo env var
+        run: |
+          echo ${{ env.REPOSITORIES }}
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.CFARREND_GITHUB_TOKEN }}
           event-type: on-demand-build
-          client-payload: '{ "repositories" : ["github-actions-workflows", ""] }'
+          client-payload: '{ "repositories" : ${{ env.REPOSITORIES }} }'
       # - name: Checkout code
       #   uses: actions/checkout@v3
       # - name: Trivy
