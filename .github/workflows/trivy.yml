@@ -28,4 +28,4 @@ jobs:
       - name: Run trivy
         if: ${{ matrix.repository }}
         run: |
-          docker run -v $(pwd):/work -it aquasec/trivy:0.28.0 fs --exit-code 1 .
+          docker run -v $(pwd):/work -t aquasec/trivy:0.28.0 fs --exit-code 1 .
