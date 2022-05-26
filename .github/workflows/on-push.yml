@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test env vars
+        env:
+          GITHUB_TOKEN: ${{ secrets.CFARREND_GITHUB_TOKEN }}
         run: |
           # echo 'REPOSITORIES=["repo", "github-actions-workflows", ""]' >> $GITHUB_ENV
           echo "REPOSITORIES=$(gh repo list cfarrend --json name --template '[{{range .}}{{printf "\"%v\", " .name}}{{end}}""]' -L 9999)" >> $GITHUB_ENV
